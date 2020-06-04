@@ -18,8 +18,8 @@ phases:
         - export KUBECONFIG=$HOME/.kube/config
   build:
     commands:
-     ## Enable the below line if you want to sync any configurations from S3
-     ## - aws s3 sync $BUCKET .
+     ## Enable the below line if you want to create your DB and other secure parameters to the .env/config files. make sure to grant access to the SSM parameter store.
+     ## - aws ssm get-parameter --with-decryption --name $WHATEVERTHEPARAMETERNAMR --region $REGION | jq '.Parameter.Value' > .env
       - docker build --tag $REPOSITORY_URI:$TAG .
 
   post_build:
