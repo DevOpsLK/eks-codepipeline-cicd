@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "STS",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetRegistryPolicy",
+                "ecr:DescribeRegistry",
+                "ecr:GetAuthorizationToken",
+                "sts:*",
+                "ecr:DeleteRegistryPolicy",
+                "ecr:PutRegistryPolicy",
+                "ecr:PutReplicationConfiguration"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ECR Repo",
+            "Effect": "Allow",
+            "Action": "ecr:*",
+            "Resource": "arn:aws:ecr:<aws_region>:<account_id>:repository/<repo_name>"
+        }
+    ]
+}
